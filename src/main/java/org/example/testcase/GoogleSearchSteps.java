@@ -1,3 +1,5 @@
+package org.example.testcase;
+
 import org.jbehave.core.annotations.*;
 import org.jbehave.core.steps.Steps;
 import org.openqa.selenium.By;
