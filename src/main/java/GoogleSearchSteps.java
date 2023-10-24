@@ -12,11 +12,11 @@ public class GoogleSearchSteps extends Steps {
     public void openGoogleHomepage() {
         String path = "/src/main/resources/driver";
         switch (OSUtils.getOS()) {
-            case WINDOWS:
-                path = "/chromedriver-mac-arm64/chromedriver";
-                break;
             case MAC:
-                path = "/chromedriver-win64/chromedriver.exe";
+                path = path + "/chromedriver-mac-arm64/chromedriver";
+                break;
+            case WINDOWS:
+                path = path + "/chromedriver-win64/chromedriver.exe";
                 break;
         }
 
