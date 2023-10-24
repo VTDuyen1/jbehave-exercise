@@ -4,13 +4,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import core.helper.OSUtils;
 public class GoogleSearchSteps extends Steps {
     private WebDriver driver;
 
     @Given("the user is on the Google homepage")
     public void openGoogleHomepage() {
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +"/src/main/resources/driver/chromedriver-mac-arm64/chromedriver");
+        String path = "/src/main/resources/driver";
+        switch (OSUtils.getOS()) {
+            case WINDOWS:
+                path = "/chromedriver-mac-arm64/chromedriver";
+                break;
+            case MAC:
+                path = "/chromedriver-win64/chromedriver.exe";
+                break;
+        }
+
+        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + path);
         driver = new ChromeDriver();
         driver.get("https://www.google.com");
     }
